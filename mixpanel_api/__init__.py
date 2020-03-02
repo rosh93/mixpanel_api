@@ -1262,7 +1262,11 @@ class Mixpanel(object):
         :type response: str
 
         """
-        response_data = json.loads(response)
+        try:
+            response_data = json.loads(response)
+        except TypeError:
+            Mixpanel.LOGGER.warning("Bad API response: " + response)
+            return
         if ('status' in response_data and response_data['status'] != 1) or ('status' not in response_data):
             Mixpanel.LOGGER.warning("Bad API response: " + response)
         Mixpanel.LOGGER.debug("API Response: " + response)
