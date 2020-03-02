@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: mixpanel_api
-Version: 1.6.2+retryfix
+Version: 1.6.2+retryfix+2
 Summary: Utilities-only module for exporting and importing data into Mixpanel. NOT for server-side app tracking.
 Home-page: http://www.mixpanel.com
 Author: Jared McFarland
