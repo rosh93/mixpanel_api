@@ -1262,14 +1262,17 @@ class Mixpanel(object):
         :type response: str
 
         """
+        if response is None:
+            Mixpanel.LOGGER.warning("Bad API response")
+            return
         try:
             response_data = json.loads(response)
         except TypeError:
-            Mixpanel.LOGGER.warning("Bad API response: " + response)
+            Mixpanel.LOGGER.warning("Bad API response: " + str(response))
             return
         if ('status' in response_data and response_data['status'] != 1) or ('status' not in response_data):
-            Mixpanel.LOGGER.warning("Bad API response: " + response)
-        Mixpanel.LOGGER.debug("API Response: " + response)
+            Mixpanel.LOGGER.warning("Bad API response: " + str(response))
+        # Mixpanel.LOGGER.debug("API Response: " + response)
 
     @staticmethod
     def _write_items_to_csv(items, output_file):
