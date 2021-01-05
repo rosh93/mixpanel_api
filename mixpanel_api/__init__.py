@@ -1267,7 +1267,7 @@ class Mixpanel(object):
             return
         try:
             response_data = json.loads(response)
-        except TypeError:
+        except (ValueError, TypeError):
             Mixpanel.LOGGER.warning("Bad API response: " + str(response))
             return
         if ('status' in response_data and response_data['status'] != 1) or ('status' not in response_data):
